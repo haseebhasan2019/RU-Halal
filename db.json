@@ -1,0 +1,19 @@
+{
+  "restaurants": [
+    {
+      "name": "KP",
+      "cuisine": "Afghan",
+      "id": 1
+    },
+    {
+      "name": "Tribos",
+      "cuisine": "Portugese",
+      "id": 2
+    },
+    {
+      "name": "Roses",
+      "cuisine": "Burger",
+      "id": 3
+    }
+  ]
+}
