@@ -3,16 +3,25 @@
     {
       "name": "KP",
       "cuisine": "Afghan",
+      "campus": "College Avenue",
+      "cost": "$$",
+      "halal": "Halal",
       "id": 1
     },
     {
       "name": "Tribos",
       "cuisine": "Portugese",
+      "campus": "College Avenue",
+      "cost": "$$",
+      "halal": "Halal",
       "id": 2
     },
     {
-      "name": "Roses",
-      "cuisine": "Burger",
+      "name": "King of Gyro",
+      "cuisine": "Platter",
+      "campus": "College Avenue",
+      "cost": "$",
+      "halal": "Halal",
       "id": 3
     }
   ]

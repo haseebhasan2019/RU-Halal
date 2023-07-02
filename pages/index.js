@@ -19,7 +19,13 @@ export default function Home() {
 
   //Fetch restaurants
   const fetchRestaurants = async () => {
-    const res = await fetch('http://localhost:5000/restaurants')
+    const res = await fetch('http://localhost:5000/restaurants', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+    }) 
     const data = await res.json()
     // console.log(data)
     return data
@@ -31,6 +37,7 @@ export default function Home() {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify(restaurant),
     })
@@ -39,16 +46,21 @@ export default function Home() {
     setRestaurants([...restaurants, newRestaurant])
   }
 
+  //Delete Restaurant
+  
+
+  //Edit Restaurant
+
   return (
     <>
       <Head>
-        <title>Restaurant Tracker App</title>
+        <title>RU Halal</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
         <h1 className={styles.title}>
-          Restaurant Tracker
+          RU Halal?!
         </h1>
         <AddRestaurant onAdd={addRestaurant}/>
         {restaurants.length > 0 ? 
