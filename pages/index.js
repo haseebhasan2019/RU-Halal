@@ -2,6 +2,8 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import AddRestaurant from '../components/AddRestaurant';
 import Restaurants from '../components/Restaurants';
+import RestaurantsTable from '../components/RestaurantsTable';
+import { Typography } from '@mui/material';
 import { useState, useEffect } from "react";
 
 export default function Home() {
@@ -47,9 +49,17 @@ export default function Home() {
   }
 
   //Delete Restaurant
-  
+  const deleteRestaurant = async (id) => {
+    
+    await fetch(`http://localhost:5000/restaurants/${id}`, {
+      method: 'DELETE',
+    })
+    // console.log('delete', id);
+    setRestaurants(restaurants.filter((restaurant) => restaurant.id !== id))
+  }
 
   //Edit Restaurant
+
 
   return (
     <>
@@ -59,12 +69,18 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className={styles.title}>
+        <Typography variant="h2" className={styles.title}>
           RU Halal?!
-        </h1>
-        <AddRestaurant onAdd={addRestaurant}/>
-        {restaurants.length > 0 ? 
-        ( <Restaurants restaurants={restaurants}/>
+        </Typography>
+        <AddRestaurant onAdd={addRestaurant} />
+        {/* {restaurants.length > 0 ? 
+        ( <Restaurants restaurants={restaurants} onDelete={deleteRestaurant}/>
+        ) : (
+        'No Restaurants'
+      )} */}
+      <br/>
+      {restaurants.length > 0 ? 
+        ( <RestaurantsTable data={restaurants}/>
         ) : (
         'No Restaurants'
       )}

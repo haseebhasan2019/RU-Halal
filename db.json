@@ -1,28 +1,36 @@
 {
   "restaurants": [
     {
-      "name": "KP",
-      "cuisine": "Afghan",
-      "campus": "College Avenue",
-      "cost": "$$",
-      "halal": "Halal",
-      "id": 1
-    },
-    {
-      "name": "Tribos",
-      "cuisine": "Portugese",
-      "campus": "College Avenue",
-      "cost": "$$",
-      "halal": "Halal",
-      "id": 2
-    },
-    {
       "name": "King of Gyro",
       "cuisine": "Platter",
       "campus": "College Avenue",
       "cost": "$",
       "halal": "Halal",
       "id": 3
+    },
+    {
+      "name": "Tribos",
+      "cuisine": "Portugese",
+      "campus": "Livingston",
+      "cost": "$$",
+      "halal": "Hand-slaughter",
+      "id": 4
+    },
+    {
+      "name": "Haseeb",
+      "cuisine": "Tribos",
+      "campus": "Livingston",
+      "cost": "",
+      "halal": "",
+      "id": 5
+    },
+    {
+      "name": "New ",
+      "cuisine": "Food",
+      "campus": "Busch",
+      "cost": "$$",
+      "halal": "Halal",
+      "id": 6
     }
   ]
 }

@@ -1,3 +1,12 @@
+import { 
+    FormControl, 
+    TextField, 
+    RadioGroup, 
+    FormControlLabel, 
+    Radio, 
+    Button, 
+    FormLabel, 
+    FormGroup } from '@mui/material';
 import { useState } from "react";
 
 export default function AddRestaurant ({ onAdd }) {
@@ -26,77 +35,76 @@ export default function AddRestaurant ({ onAdd }) {
         setHalal('')
     }
     return (
+        <>
         <form onSubmit={onSubmit}>
-            <div>
-                <input type="text" placeholder="Add Restaurant"
-                    value={name} onChange={(e) => setName(e.target.value)} />
-            </div>
-            <div>
-                <input type="text" placeholder="Add Cuisine"
-                    value={cuisine} onChange={(e) => setCuisine(e.target.value)} />
-            </div>
-            <div>
-                <label>Closest Campus</label><br></br>
-                <label>
-                    <input type="radio" value="Livingston" name="campus" onChange={(e) => setCampus(e.target.value)}/>
-                    Livingston
-                </label><br></br>
-                <label>
-                    <input type="radio" value="College Avenue" name="campus" onChange={(e) => setCampus(e.target.value)}/>
-                    College Avenue
-                </label><br></br>
-                <label>
-                    <input type="radio" value="Busch" name="campus" onChange={(e) => setCampus(e.target.value)}/>
-                    Busch
-                </label><br></br>
-                <label>
-                    <input type="radio" value="Cook" name="campus" onChange={(e) => setCampus(e.target.value)}/>
-                    Cook
-                </label><br></br>
-                <label>
-                    <input type="radio" value="Douglass" name="campus" onChange={(e) => setCampus(e.target.value)}/>
-                    Douglass
-                </label>
-            </div>
-            <div>
-                <label>Cost</label><br></br>
-                <label>
-                    <input type="radio" value="$" name="cost" onChange={(e) => setCost(e.target.value)}/>
-                    $
-                </label><br></br>
-                <label>
-                    <input type="radio" value="$$" name="cost" onChange={(e) => setCost(e.target.value)}/>
-                    $$
-                </label><br></br>
-                <label>
-                    <input type="radio" value="$$$" name="cost" onChange={(e) => setCost(e.target.value)}/>
-                    $$$
-                </label><br></br>
-            </div>
-            <div>
-                <label>Halal Status</label><br></br>
-                <label>
-                    <input type="radio" value="HMS" name="halal" onChange={(e) => setHalal(e.target.value)}/>
-                    HMS
-                </label><br></br>
-                <label>
-                    <input type="radio" value="Hand-slaughter" name="halal" onChange={(e) => setHalal(e.target.value)}/>
-                    Hand-slaughter
-                </label><br></br>
-                <label>
-                    <input type="radio" value="Halal" name="halal" onChange={(e) => setHalal(e.target.value)}/>
-                    Halal
-                </label><br></br>
-                <label>
-                    <input type="radio" value="Not Halal" name="halal" onChange={(e) => setHalal(e.target.value)}/>
-                    Not Halal
-                </label><br></br>
-            </div>
-
-            <input type='submit' value='Save Restaurant' />
-
+        <FormGroup sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} center row={false}>
+        <FormControl margin="normal" sx={{ width: '30ch' }}>
+            <TextField
+            label="Add Restaurant"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            size = {100}
+            />
+        </FormControl >
+        <FormControl margin="normal" sx={{ width: '30ch' }}>
+            <TextField
+            label="Add Cuisine"
+            value={cuisine}
+            onChange={(e) => setCuisine(e.target.value)}
+            />
+        </FormControl>
+        <FormControl margin="normal">
+            <FormLabel sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >Closest Campus</FormLabel>
+            <RadioGroup
+            row
+            aria-label="Closest Campus"
+            name="campus"
+            value={campus}
+            onChange={(e) => setCampus(e.target.value)}
+            >
+            <FormControlLabel value="Livingston" control={<Radio />} label="Livingston" />
+            <FormControlLabel value="College Avenue" control={<Radio />} label="College Avenue" />
+            <FormControlLabel value="Busch" control={<Radio />} label="Busch" />
+            <FormControlLabel value="Cook" control={<Radio />} label="Cook" />
+            <FormControlLabel value="Douglass" control={<Radio />} label="Douglass" />
+            </RadioGroup>
+        </FormControl>
+        <FormControl margin="normal">
+            <FormLabel sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Halal Status</FormLabel>
+            <RadioGroup
+            row
+            aria-label="Halal Status"
+            name="halal"
+            value={halal}
+            onChange={(e) => setHalal(e.target.value)}
+            >
+            <FormControlLabel value="HMS" control={<Radio />} label="HMS" />
+            <FormControlLabel value="Hand-slaughter" control={<Radio />} label="Hand-slaughter" />
+            <FormControlLabel value="Halal" control={<Radio />} label="Halal" />
+            <FormControlLabel value="Not Halal" control={<Radio />} label="Not Halal" />
+            </RadioGroup>
+        </FormControl>
+        <FormControl margin="normal">
+            <FormLabel sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Cost</FormLabel>
+            <RadioGroup
+            row
+            aria-label="Cost"
+            name="cost"
+            value={cost}
+            onChange={(e) => setCost(e.target.value)}
+            >
+            <FormControlLabel value="$" control={<Radio />} label="$" />
+            <FormControlLabel value="$$" control={<Radio />} label="$$" />
+            <FormControlLabel value="$$$" control={<Radio />} label="$$$" />
+            </RadioGroup>
+        </FormControl>
+        <Button sx={{ width: '25ch' }} type="submit" variant="contained" color="primary">
+            Save Restaurant
+        </Button>
+        </FormGroup>
         </form>
-
+      </>
     )
 }
 
