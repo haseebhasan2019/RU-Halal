@@ -1,36 +1,20 @@
 {
   "restaurants": [
     {
-      "name": "King of Gyro",
-      "cuisine": "Platter",
+      "name": "Maheem's Kitchen",
+      "cuisine": "Coffee",
       "campus": "College Avenue",
       "cost": "$",
-      "halal": "Halal",
-      "id": 3
+      "halal": "Hand-slaughter",
+      "id": 2
     },
     {
-      "name": "Tribos",
-      "cuisine": "Portugese",
-      "campus": "Livingston",
+      "name": "Kabab Paradise",
+      "cuisine": "Afghan",
+      "campus": "College Avenue",
       "cost": "$$",
       "halal": "Hand-slaughter",
       "id": 4
-    },
-    {
-      "name": "Haseeb",
-      "cuisine": "Tribos",
-      "campus": "Livingston",
-      "cost": "",
-      "halal": "",
-      "id": 5
-    },
-    {
-      "name": "New ",
-      "cuisine": "Food",
-      "campus": "Busch",
-      "cost": "$$",
-      "halal": "Halal",
-      "id": 6
     }
   ]
 }

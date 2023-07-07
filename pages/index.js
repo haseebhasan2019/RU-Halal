@@ -49,8 +49,12 @@ export default function Home() {
   }
 
   //Delete Restaurant
-  const deleteRestaurant = async (id) => {
-    
+  const deleteRestaurant = async (id, name) => {
+    if (
+      !confirm(`Are you sure you want to delete ${name}`)
+    ) {
+      return;
+    }
     await fetch(`http://localhost:5000/restaurants/${id}`, {
       method: 'DELETE',
     })
@@ -80,7 +84,7 @@ export default function Home() {
       )} */}
       <br/>
       {restaurants.length > 0 ? 
-        ( <RestaurantsTable data={restaurants}/>
+        ( <RestaurantsTable data={restaurants} onDelete={deleteRestaurant}/>
         ) : (
         'No Restaurants'
       )}

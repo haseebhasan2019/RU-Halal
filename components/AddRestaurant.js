@@ -66,8 +66,7 @@ export default function AddRestaurant ({ onAdd }) {
             <FormControlLabel value="Livingston" control={<Radio />} label="Livingston" />
             <FormControlLabel value="College Avenue" control={<Radio />} label="College Avenue" />
             <FormControlLabel value="Busch" control={<Radio />} label="Busch" />
-            <FormControlLabel value="Cook" control={<Radio />} label="Cook" />
-            <FormControlLabel value="Douglass" control={<Radio />} label="Douglass" />
+            <FormControlLabel value="Cook/Douglass" control={<Radio />} label="Cook/Douglass" />
             </RadioGroup>
         </FormControl>
         <FormControl margin="normal">
