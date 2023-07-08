@@ -5,6 +5,7 @@ import Restaurants from '../components/Restaurants';
 import RestaurantsTable from '../components/RestaurantsTable';
 import { Typography } from '@mui/material';
 import { useState, useEffect } from "react";
+import { CleaningServices } from '@mui/icons-material';
 
 export default function Home() {
   const [restaurants, setRestaurants] = useState([])
@@ -63,6 +64,22 @@ export default function Home() {
   }
 
   //Edit Restaurant
+  const editRestaurant = async ({ exitEditingMode, row, values }) => {
+    //Do Form Validation
+    //Change Database
+    const res = await fetch(`http://localhost:5000/restaurants/${row.getValue('id')}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+      },
+      body: JSON.stringify(values),
+    })
+    //Change State
+    restaurants[row.index] = values;
+    setRestaurants([...restaurants]);
+    exitEditingMode();
+  }
 
 
   return (
@@ -84,7 +101,10 @@ export default function Home() {
       )} */}
       <br/>
       {restaurants.length > 0 ? 
-        ( <RestaurantsTable data={restaurants} onDelete={deleteRestaurant}/>
+        ( <RestaurantsTable 
+            data={restaurants} 
+            onDelete={deleteRestaurant}
+            onEdit={editRestaurant}/>
         ) : (
         'No Restaurants'
       )}

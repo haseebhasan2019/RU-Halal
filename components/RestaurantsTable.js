@@ -4,16 +4,23 @@ import {
     Box,
     IconButton,
     Tooltip,
+    MenuItem,
   } from '@mui/material';
   import { Delete, Edit } from '@mui/icons-material';
 
-export default function RestaurantsTable ( {data, onDelete} ) {
+export default function RestaurantsTable ( {data, onDelete, onEdit} ) {
+    const costs = ["$", "$$", "$$$"];
+    const campuses = ["Livingston", "College Avenue", "Busch", "Cook/Douglass"];
+    const halalStatuses = ["HMS", "Hand-slaughter", "Halal", "Not Halal"];
     const columns = useMemo(
         () => [
             {
                 accessorKey: 'id',
                 header: 'ID',
                 size: 100,
+                enableColumnOrdering: false,
+                enableEditing: false, //disable editing on this column
+                enableSorting: false,
                 muiTableHeadCellProps: {
                     align: 'center',
                 },
@@ -53,6 +60,14 @@ export default function RestaurantsTable ( {data, onDelete} ) {
                 muiTableBodyCellProps: {
                     align: 'center',
                 },
+                muiTableBodyCellEditTextFieldProps: {
+                    select: true, //change to select for a dropdown
+                    children: campuses.map((campus) => (
+                      <MenuItem key={campus} value={campus}>
+                        {campus}
+                      </MenuItem>
+                    )),
+                },
             },
             {
                 accessorKey: 'cost',
@@ -63,6 +78,14 @@ export default function RestaurantsTable ( {data, onDelete} ) {
                 },
                 muiTableBodyCellProps: {
                     align: 'center',
+                },
+                muiTableBodyCellEditTextFieldProps: {
+                    select: true, //change to select for a dropdown
+                    children: costs.map((cost) => (
+                      <MenuItem key={cost} value={cost}>
+                        {cost}
+                      </MenuItem>
+                    )),
                 },
             },
             {
@@ -75,14 +98,23 @@ export default function RestaurantsTable ( {data, onDelete} ) {
                 muiTableBodyCellProps: {
                     align: 'center',
                 },
+                muiTableBodyCellEditTextFieldProps: {
+                    select: true, //change to select for a dropdown
+                    children: halalStatuses.map((halalStatus) => (
+                      <MenuItem key={halalStatus} value={halalStatus}>
+                        {halalStatus}
+                      </MenuItem>
+                    )),
+                },
             },
         ],
         [],
     );
-    return <MaterialReactTable 
-        enableEditing 
+    return <MaterialReactTable  
         columns={columns} 
         data={data}
+        enableEditing
+        onEditingRowSave={onEdit}
         renderRowActions={({ row, table }) => (
             <Box sx={{ display: 'flex', gap: '1rem' }}>
               <Tooltip arrow placement="left" title="Edit">

@@ -37,14 +37,13 @@ export default function AddRestaurant ({ onAdd }) {
     return (
         <>
         <form onSubmit={onSubmit}>
-        <FormGroup sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} center row={false}>
+        <FormGroup sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} row={false}>
         <FormControl margin="normal" sx={{ width: '30ch' }}>
             <TextField
             label="Add Restaurant"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            size = {100}
             />
         </FormControl >
         <FormControl margin="normal" sx={{ width: '30ch' }}>
@@ -106,5 +105,3 @@ export default function AddRestaurant ({ onAdd }) {
       </>
     )
 }
-
-// export default AddRestaurant

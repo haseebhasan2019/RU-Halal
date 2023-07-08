@@ -1,20 +1,28 @@
 {
   "restaurants": [
     {
-      "name": "Maheem's Kitchen",
+      "id": 2,
+      "name": "Meem's Kitchen",
       "cuisine": "Coffee",
       "campus": "College Avenue",
       "cost": "$",
-      "halal": "Hand-slaughter",
-      "id": 2
+      "halal": "Hand-slaughter"
     },
     {
+      "id": 4,
       "name": "Kabab Paradise",
       "cuisine": "Afghan",
       "campus": "College Avenue",
+      "cost": "$",
+      "halal": "Hand-slaughter"
+    },
+    {
+      "id": 5,
+      "name": "Tribos Peri Peri",
+      "cuisine": "Portugese",
+      "campus": "Livingston",
       "cost": "$$",
-      "halal": "Hand-slaughter",
-      "id": 4
+      "halal": "Hand-slaughter"
     }
   ]
 }
