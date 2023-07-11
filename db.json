@@ -23,6 +23,14 @@
       "campus": "Livingston",
       "cost": "$$",
       "halal": "Hand-slaughter"
+    },
+    {
+      "name": "AKG",
+      "cuisine": "Afghan",
+      "campus": "Cook/Douglass",
+      "cost": "$$",
+      "halal": "Hand-slaughter",
+      "id": 6
     }
   ]
 }

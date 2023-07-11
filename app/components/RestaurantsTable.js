@@ -8,7 +8,7 @@ import {
   } from '@mui/material';
   import { Delete, Edit } from '@mui/icons-material';
 
-export default function RestaurantsTable ( {data, onDelete, onEdit} ) {
+export default function RestaurantsTable ( {data, onDelete, onEdit, admin} ) {
     const costs = ["$", "$$", "$$$"];
     const campuses = ["Livingston", "College Avenue", "Busch", "Cook/Douglass"];
     const halalStatuses = ["HMS", "Hand-slaughter", "Halal", "Not Halal"];
@@ -113,7 +113,9 @@ export default function RestaurantsTable ( {data, onDelete, onEdit} ) {
     return <MaterialReactTable  
         columns={columns} 
         data={data}
-        enableEditing
+        initialState={{ columnVisibility: { id: false } }}
+        enableHiding={false}
+        enableEditing={admin}
         onEditingRowSave={onEdit}
         renderRowActions={({ row, table }) => (
             <Box sx={{ display: 'flex', gap: '1rem' }}>

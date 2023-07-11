@@ -4,6 +4,7 @@ import Head from 'next/head';
 import styles from '../../styles/Home.module.css';
 import AddRestaurant from '../../components/AddRestaurant';
 import Restaurants from '../../components/Restaurants';
+import NavBar from '../../components/NavBar';
 import RestaurantsTable from '../../components/RestaurantsTable';
 import { Typography } from '@mui/material';
 import { useState, useEffect } from "react";
@@ -86,6 +87,8 @@ export default function Page() {
 
   return (
     <>
+    <NavBar/>
+    <br/>
       <Head>
         <title>RU Halal</title>
         <link rel="icon" href="/favicon.ico" />
@@ -99,7 +102,8 @@ export default function Page() {
         ( <RestaurantsTable 
             data={restaurants} 
             onDelete={deleteRestaurant}
-            onEdit={editRestaurant}/>
+            onEdit={editRestaurant}
+            admin={false}/>
         ) : (
         'No Restaurants'
       )}
