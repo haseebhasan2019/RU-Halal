@@ -1,3 +1,5 @@
+"use client";
+
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import AddRestaurant from '../components/AddRestaurant';
@@ -7,7 +9,7 @@ import { Typography } from '@mui/material';
 import { useState, useEffect } from "react";
 import { CleaningServices } from '@mui/icons-material';
 
-export default function Home() {
+export default function Page() {
   const [restaurants, setRestaurants] = useState([])
 
   //Update restaurants

@@ -9,12 +9,12 @@
       "halal": "Hand-slaughter"
     },
     {
-      "id": 4,
       "name": "Kabab Paradise",
       "cuisine": "Afghan",
       "campus": "College Avenue",
       "cost": "$",
-      "halal": "Hand-slaughter"
+      "halal": "Hand-slaughter",
+      "id": 4
     },
     {
       "id": 5,
