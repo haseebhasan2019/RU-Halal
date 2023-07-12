@@ -116,6 +116,8 @@ export default function RestaurantsTable ( {data, onDelete, onEdit, admin} ) {
         initialState={{ columnVisibility: { id: false } }}
         enableHiding={false}
         enableEditing={admin}
+        enableDensityToggle={false}
+        enableFullScreenToggle={false}
         onEditingRowSave={onEdit}
         renderRowActions={({ row, table }) => (
             <Box sx={{ display: 'flex', gap: '1rem' }}>

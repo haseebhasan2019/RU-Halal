@@ -1,1 +1,2 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+Web application for finding Halal restaurants at Rutgers - New Brunswick
+Designed with Next.js and MaterialUI

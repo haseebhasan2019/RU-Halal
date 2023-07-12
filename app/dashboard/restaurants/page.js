@@ -37,21 +37,6 @@ export default function Page() {
     return data
   }
 
-  //Add Restaurant
-  const addRestaurant = async (restaurant) => {
-    const res = await fetch(`http://localhost:5000/restaurants`, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-      },
-      body: JSON.stringify(restaurant),
-    })
-    const newRestaurant = await res.json()
-
-    setRestaurants([...restaurants, newRestaurant])
-  }
-
   //Delete Restaurant
   const deleteRestaurant = async (id, name) => {
     if (
@@ -105,7 +90,7 @@ export default function Page() {
             onEdit={editRestaurant}
             admin={false}/>
         ) : (
-        'No Restaurants'
+        <></>
       )}
       
 

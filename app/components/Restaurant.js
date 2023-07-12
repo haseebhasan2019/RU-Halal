@@ -1,19 +1,22 @@
-export default function Restaurant ({ restaurant, onDelete }) {
-    return (
-        <div>
-            <h3>
-                {restaurant.name}
-            </h3>
-            <ul>
-                <li>{restaurant.campus}</li>
-                <li>{restaurant.cuisine}</li>
-                <li>{restaurant.cost}</li>
-                <li>{restaurant.halal}</li>
-                <li>+</li>
-                <li onClick={() => onDelete(restaurant.id)}>-</li>
-            </ul>
-            
+import {Card, CardContent, Typography } from '@mui/material';
 
-        </div>
+export default function Restaurant ({ restaurant }) {
+    return (
+        <Card sx={{ width: 275 }}>
+            <CardContent>
+                <Typography sx={{textAlign: "center"}} variant="h5">
+                    {restaurant.name}
+                </Typography>
+                <Typography variant="body2">
+                    <ul>
+                        <li>{restaurant.campus}</li>
+                        <li>{restaurant.cuisine}</li>
+                        <li>{restaurant.cost}</li>
+                        <li>{restaurant.halal}</li>
+                    </ul>
+                </Typography>
+            </CardContent>
+
+        </Card>
     )
 }
