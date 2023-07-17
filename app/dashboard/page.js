@@ -5,6 +5,7 @@ import { Typography, Button, Link } from '@mui/material';
 import NavBar from '../components/NavBar';
 import Restaurant from '../components/Restaurant';
 import { useState, useEffect } from "react";
+import FilterRestaurants from '../components/FilterRestaurants';
 
 export default function Page() {
   const [restaurants, setRestaurants] = useState([])
@@ -42,6 +43,23 @@ export default function Page() {
     // console.log(restaurant)
   }
 
+  const filterRestaurants = (params) => {
+    console.log(campus)
+    console.log(cost)
+    const filteredRestaurants = restaurants;
+    if (filteredRestaurants.includes(value)) {
+        setHalal(halal.filter((item) => item !== value));
+      } else {
+        setHalal([...halal, value]);
+      }
+
+    // console.log(cuisine)
+    // let index = Math.floor(Math.random() * (restaurants.length));
+    // console.log(index)
+    // setRestaurant(restaurants[index]);
+    // console.log(restaurant)
+  }
+
 return (
     <>
     <NavBar/>
@@ -60,6 +78,7 @@ return (
         </Button>
         <br/>
         {restaurant == null ? (<></>) : (<Restaurant restaurant={restaurant}/>)}
+        <FilterRestaurants filter={filterRestaurants}/>
       </main>
     </>
 )

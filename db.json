@@ -31,6 +31,30 @@
       "cost": "$$",
       "halal": "Hand-slaughter",
       "id": 6
+    },
+    {
+      "name": "Rose's",
+      "cuisine": "Italian",
+      "campus": "Livingston",
+      "cost": "$$",
+      "halal": "Halal",
+      "id": 7
+    },
+    {
+      "name": "Zohair's Hell",
+      "cuisine": "Fire",
+      "campus": "Cook/Douglass",
+      "cost": "$$$",
+      "halal": "Not Halal",
+      "id": 8
+    },
+    {
+      "name": "Wendy's",
+      "cuisine": "Fast-food",
+      "campus": "College Avenue",
+      "cost": "$",
+      "halal": "Not Halal",
+      "id": 9
     }
   ]
 }
