@@ -9,7 +9,11 @@ import FilterRestaurants from '../components/FilterRestaurants';
 
 export default function Page() {
   const [restaurants, setRestaurants] = useState([])
+  // const [filteredRestaurants, setFilteredRestaurants] = useState([])
+  const filteredRestaurants = []
   const [restaurant, setRestaurant] = useState()
+  const [filteredRestaurant, setFilteredRestaurant] = useState()
+
 
   //Update restaurants
   useEffect(() => {
@@ -44,20 +48,24 @@ export default function Page() {
   }
 
   const filterRestaurants = (params) => {
-    console.log(campus)
-    console.log(cost)
-    const filteredRestaurants = restaurants;
-    if (filteredRestaurants.includes(value)) {
-        setHalal(halal.filter((item) => item !== value));
-      } else {
-        setHalal([...halal, value]);
+    console.log(params)
+    filteredRestaurants.length = 0;
+    setFilteredRestaurant(null)
+    restaurants.forEach((restaurant) => {
+      if (params.campus.includes(restaurant.campus) && params.cost.includes(restaurant.cost) && params.halal.includes(restaurant.halal) ) {
+        // setFilteredRestaurants([...filteredRestaurants, restaurant]);
+        filteredRestaurants.push(restaurant)
+        // console.log(restaurant)
+        // console.log(filteredRestaurants)
       }
+    });
+    console.log(filteredRestaurants)
 
-    // console.log(cuisine)
-    // let index = Math.floor(Math.random() * (restaurants.length));
-    // console.log(index)
-    // setRestaurant(restaurants[index]);
-    // console.log(restaurant)
+    //Select restaurant
+    if (filteredRestaurants.length != 0) {
+      let index = Math.floor(Math.random() * (filteredRestaurants.length));
+      setFilteredRestaurant(filteredRestaurants[index]);
+    }
   }
 
 return (
@@ -74,11 +82,14 @@ return (
           RU Halal?!
         </Typography>
         <Button onClick={() => pickRestaurant()} variant="contained">
-          Pick!
+          Random Roll!
         </Button>
         <br/>
         {restaurant == null ? (<></>) : (<Restaurant restaurant={restaurant}/>)}
         <FilterRestaurants filter={filterRestaurants}/>
+        <br/>
+        {filteredRestaurant == null ? (<Typography>No restaurants with those parameters</Typography>) : (<Restaurant restaurant={filteredRestaurant}/>)}
+
       </main>
     </>
 )

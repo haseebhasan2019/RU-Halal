@@ -1,9 +1,7 @@
 import { 
     FormControl, 
     Checkbox,
-    RadioGroup, 
     FormControlLabel, 
-    Radio, 
     Button, 
     FormLabel, 
     FormGroup } from '@mui/material';
@@ -11,45 +9,46 @@ import { useState } from "react";
 
 export default function FilterRestaurants ({ filter }) {
     // const [cuisine, setCuisine] = useState('')
-    const [campus, setCampus] = useState('')
-    const [cost, setCost] = useState([])
+    const [campus, setCampus] = useState([])
     const [halal, setHalal] = useState([])
+    const [cost, setCost] = useState([])
+
+    const campuses = ["Livingston", "College Avenue", "Busch", "Cook/Douglass"];
+    const halalStatuses = ["HMS", "Hand-slaughter", "Halal", "Not Halal"];
+    const costs = ["$", "$$", "$$$"];
 
     const onSubmit = (e) => {
         e.preventDefault()
-        // if (!name) {
-        //     alert("Please add a restaurant")
+        // if (campus.length == 0 || cost.length == 0 || halal.length == 0) {
+        //     alert("Please ensure all search fields have at least one box checked")
         //     return
         // }
-        // onAdd({ name, cuisine, campus, cost, halal })
-        // console.log(campus)
-        // console.log(cost)
-        // console.log(halal)
+        if (campus.length == 0) {
+            setCampus(campuses)
+        }
+        if (halal.length == 0) {
+            setHalal(halalStatuses)
+        }
+        if (cost.length == 0) {
+            setCost(costs)
+        }
+        console.log(campus)
+        console.log(halal)
+        console.log(cost)
         filter({campus, cost, halal})
 
-        // document.querySelector('input[name="campus"]:checked').checked = false;
-        // document.querySelector('input[name="cost"]:checked').checked = false;
-        // document.querySelector('input[name="halal"]:checked').checked = false;
 
         // setCuisine('')
-        setCampus('')
-        setCost([])
-        setHalal([])
+        // setCampus([])
+        // setCost([])
+        // setHalal([])
     }
 
-    const handleHalalChange = (value) => {
-        if (halal.includes(value)) {
-          setHalal(halal.filter((item) => item !== value));
+    const handleCheckboxChange = (func, category, value) => {
+        if (category.includes(value)) {
+            func(category.filter((item) => item !== value));
         } else {
-          setHalal([...halal, value]);
-        }
-      };
-
-    const handleCheckboxChange = (fun, cat, value) => {
-        if (cat.includes(value)) {
-            fun(cat.filter((item) => item !== value));
-        } else {
-            fun([...cat, value]);
+            func([...category, value]);
         }
     };
 
@@ -57,62 +56,45 @@ export default function FilterRestaurants ({ filter }) {
         <>
         <form onSubmit={onSubmit}>
         <FormGroup sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} row={false}>
-        <FormControl margin="normal">
-            <FormLabel sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >Closest Campus</FormLabel>
-            <RadioGroup
-            row
-            aria-label="Closest Campus"
-            name="campus"
-            value={campus}
-            onChange={(e) => setCampus(e.target.value)}
-            >
-                <FormControlLabel value="Livingston" control={<Radio />} label="Livingston" />
-                <FormControlLabel value="College Avenue" control={<Radio />} label="College Avenue" />
-                <FormControlLabel value="Busch" control={<Radio />} label="Busch" />
-                <FormControlLabel value="Cook/Douglass" control={<Radio />} label="Cook/Douglass" />
-            </RadioGroup>
-        </FormControl>
-        <FormControl margin="normal">
-            <FormLabel sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Halal Status</FormLabel>
-            <FormGroup row>
-                <FormControlLabel
-                control={<Checkbox checked={halal.includes('HMS')} onChange={() => handleHalalChange('HMS')} />}
-                label="HMS"
-                />
-                <FormControlLabel
-                control={<Checkbox checked={halal.includes('Hand-slaughter')} onChange={() => handleHalalChange('Hand-slaughter')} />}
-                label="Hand-slaughter"
-                />
-                <FormControlLabel
-                control={<Checkbox checked={halal.includes('Halal')} onChange={() => handleHalalChange('Halal')} />}
-                label="Halal"
-                />
-                <FormControlLabel
-                control={<Checkbox checked={halal.includes('Not Halal')} onChange={() => handleHalalChange('Not Halal')} />}
-                label="Not Halal"
-                />
-            </FormGroup>
-        </FormControl>
-        <FormControl margin="normal">
-            <FormLabel sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Cost</FormLabel>
-            <FormGroup row >
-                <FormControlLabel
-                control={<Checkbox checked={cost.includes('$')} onChange={() => handleCheckboxChange(setCost, cost, '$')} />}
-                label="$"
-                />
-                <FormControlLabel
-                control={<Checkbox checked={cost.includes('$$')} onChange={() => handleCheckboxChange(setCost, cost, '$$')} />}
-                label="$$"
-                />
-                <FormControlLabel
-                control={<Checkbox checked={cost.includes('$$$')} onChange={() => handleCheckboxChange(setCost, cost, '$$$')} />}
-                label="$$$"
-                />
-            </FormGroup>
-        </FormControl>
-        <Button sx={{ width: '25ch' }} type="submit" variant="contained" color="primary">
-            Save Restaurant
-        </Button>
+            <FormControl margin="normal">
+                <FormLabel sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >Closest Campus</FormLabel>
+                <FormGroup row >
+                    {campuses.map((item) => (
+                        <FormControlLabel
+                        key={item}
+                        control={<Checkbox checked={campus.includes(item)} onChange={() => handleCheckboxChange(setCampus, campus, item)} />}
+                        label={item}
+                        />
+                    ))}
+                </FormGroup>
+            </FormControl>
+            <FormControl margin="normal">
+                <FormLabel sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Halal Status</FormLabel>
+                <FormGroup row>
+                    {halalStatuses.map((item) => (
+                        <FormControlLabel
+                        key={item}
+                        control={<Checkbox checked={halal.includes(item)} onChange={() => handleCheckboxChange(setHalal, halal, item)} />}
+                        label={item}
+                        />
+                    ))}
+                </FormGroup>
+            </FormControl>
+            <FormControl margin="normal">
+                <FormLabel sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>Cost</FormLabel>
+                <FormGroup row>
+                    {costs.map((item) => (
+                        <FormControlLabel
+                        key={item}
+                        control={<Checkbox checked={cost.includes(item)} onChange={() => handleCheckboxChange(setCost, cost, item)} />}
+                        label={item}
+                        />
+                    ))}
+                </FormGroup>
+            </FormControl>
+            <Button sx={{ width: '25ch' }} type="submit" variant="contained" color="primary">
+                Find a Restaurant!
+            </Button>
         </FormGroup>
         </form>
       </>
